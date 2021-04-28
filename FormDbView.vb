@@ -203,53 +203,37 @@ Public Class FormDbView
 
         Try
 
-            'Define a ThermalLabel object and set unit to MM and label size
             Dim tLabel As New ThermalLabel(UnitType.Mm, 50, 25)
-            'Set the number of labels per row
             'tLabel.LabelsPerRow = 2
             tLabel.LabelsPerRow = 1
-            'Set the horiz gap between labels
             'tLabel.LabelsHorizontalGapLength = 3
 
-            'Define a TextItem object
-            Dim txt As New TextItem(6, 4, 20, 10, "G-Tech")
-            'set Counter...
+            Dim txt As New TextItem(6, 4, 20, 10, "Testing...")
             txt.CounterStep = -1
             txt.TextAlignment = TextAlignment.Center
-
             'txt.Font.Name = Neodynamic.SDK.Printing.Font.NativePrinterFontA
             'txt.Font.Unit = FontUnit.Point
             'txt.Font.Size = 10
 
             'Define a BarcodeItem object
             Dim bc As New BarcodeItem(6, 10, 20, 10, BarcodeSymbology.Code128, DataGridViewProducts.SelectedRows(0).Cells(4).Value)
-            'Set bars' width and height...
             bc.BarWidth = 0.25
             bc.BarHeight = 7
-            'set Counter...
             bc.CounterStep = 1
             bc.CounterUseLeadingZeros = True
             bc.BarcodeAlignment = BarcodeAlignment.MiddleCenter
             bc.Font.Size = 7
 
-            'Add items to ThermalLabel object...
             tLabel.Items.Add(txt)
             tLabel.Items.Add(bc)
 
-            'Create a WindowsPrintJob object
             Using pj As New WindowsPrintJob()
                 pj.PrinterSettings = New Neodynamic.SDK.Printing.PrinterSettings()
-                'Thermal Printer is connected through USB
                 pj.PrinterSettings.Communication.CommunicationType = CommunicationType.USB
-                'Set Thermal Printer resolution
                 pj.PrinterSettings.Dpi = 203
-                'Set Thermal Printer language
                 pj.PrinterSettings.ProgrammingLanguage = ProgrammingLanguage.ZPL
-                'Set Thermal Printer name 
                 pj.PrinterSettings.PrinterName = "ZDesigner ZD230-203dpi ZPL"
-                'Set Copies to 4!!!
                 pj.Copies = 1
-                'Print ThermalLabel object...
                 pj.Print(tLabel)
             End Using
 

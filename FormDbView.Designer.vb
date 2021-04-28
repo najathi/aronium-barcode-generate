@@ -50,10 +50,8 @@ Partial Class FormDbView
         Me.DataTable1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DataSetBarcode = New Aronium_Barcode_Generate.DataSetBarcode()
         Me.PrintDocumentLabels = New System.Drawing.Printing.PrintDocument()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.NumericUpDownNoOfCols = New System.Windows.Forms.NumericUpDown()
         Me.GroupBox1.SuspendLayout()
         CType(Me.NumericUpDownCopies, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -63,7 +61,7 @@ Partial Class FormDbView
         CType(Me.DataGridViewProducts, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataTable1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSetBarcode, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ToolStrip1.SuspendLayout()
+        CType(Me.NumericUpDownNoOfCols, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -78,7 +76,7 @@ Partial Class FormDbView
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(14, 36)
+        Me.Label2.Location = New System.Drawing.Point(14, 22)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(313, 37)
         Me.Label2.TabIndex = 1
@@ -86,7 +84,7 @@ Partial Class FormDbView
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.ComboBox1)
+        Me.GroupBox1.Controls.Add(Me.NumericUpDownNoOfCols)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.NumericUpDownCopies)
         Me.GroupBox1.Controls.Add(Me.Label6)
@@ -313,21 +311,6 @@ Partial Class FormDbView
         'PrintDocumentLabels
         '
         '
-        'ToolStrip1
-        '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1066, 25)
-        Me.ToolStrip1.TabIndex = 4
-        Me.ToolStrip1.Text = "ToolStrip1"
-        '
-        'ToolStripLabel1
-        '
-        Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(25, 22)
-        Me.ToolStripLabel1.Text = "File"
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -337,21 +320,21 @@ Partial Class FormDbView
         Me.Label7.TabIndex = 12
         Me.Label7.Text = "No. of Cols:"
         '
-        'ComboBox1
+        'NumericUpDownNoOfCols
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"1", "2"})
-        Me.ComboBox1.Location = New System.Drawing.Point(105, 103)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(103, 21)
-        Me.ComboBox1.TabIndex = 13
+        Me.NumericUpDownNoOfCols.Location = New System.Drawing.Point(105, 104)
+        Me.NumericUpDownNoOfCols.Maximum = New Decimal(New Integer() {2, 0, 0, 0})
+        Me.NumericUpDownNoOfCols.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumericUpDownNoOfCols.Name = "NumericUpDownNoOfCols"
+        Me.NumericUpDownNoOfCols.Size = New System.Drawing.Size(103, 20)
+        Me.NumericUpDownNoOfCols.TabIndex = 13
+        Me.NumericUpDownNoOfCols.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'FormDbView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1066, 798)
-        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.GroupBoxProducts)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label2)
@@ -371,8 +354,7 @@ Partial Class FormDbView
         CType(Me.DataGridViewProducts, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataTable1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataSetBarcode, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
+        CType(Me.NumericUpDownNoOfCols, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -406,8 +388,6 @@ Partial Class FormDbView
     Friend WithEvents Label5 As Label
     Friend WithEvents NumericUpDownCopies As NumericUpDown
     Friend WithEvents Label6 As Label
-    Friend WithEvents ToolStrip1 As ToolStrip
-    Friend WithEvents ToolStripLabel1 As ToolStripLabel
-    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label7 As Label
+    Friend WithEvents NumericUpDownNoOfCols As NumericUpDown
 End Class

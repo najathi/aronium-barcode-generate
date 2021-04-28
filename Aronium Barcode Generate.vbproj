@@ -190,6 +190,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barcode.vb" />
     <Compile Include="CrystalReportBarcode.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

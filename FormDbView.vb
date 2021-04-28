@@ -266,48 +266,61 @@ Public Class FormDbView
 
         Try
             Dim copies As Integer = Convert.ToInt32(NumericUpDownCopies.Value)
+            Dim noOfCols As Integer = Convert.ToInt32(NumericUpDownNoOfCols.Value)
 
             Dim width As Double = NumericUpDownWidth.Value
             Dim height As Double = NumericUpDownHeight.Value
 
             Dim tLabel As New ThermalLabel(UnitType.Mm, width, height)
-            'tLabel.LabelsPerRow = 2
-            tLabel.LabelsPerRow = 1
-            'tLabel.LabelsHorizontalGapLength = 3
+
+            If (noOfCols = 1) Then
+                tLabel.LabelsPerRow = 1
+            Else
+                tLabel.LabelsPerRow = 2
+                tLabel.LabelsHorizontalGapLength = 3
+            End If
+
+            Dim txt As New TextItem(6, 4, 20, 10, "")
+            txt.DataField = "Name"
+            txt.CounterStep = -1
+            txt.TextAlignment = TextAlignment.Center
+
+            Dim bc As New BarcodeItem(6, 10, 20, 10, BarcodeSymbology.Code128, "")
+            bc.DataField = "Value"
+            bc.BarWidth = 0.25
+            bc.BarHeight = 7
+            bc.CounterStep = 1
+            bc.CounterUseLeadingZeros = True
+            bc.BarcodeAlignment = BarcodeAlignment.MiddleCenter
+            bc.Font.Size = 7
+
+            tLabel.Items.Add(txt)
+            tLabel.Items.Add(bc)
+
+            Dim barcodeData As New List(Of Barcode)
 
             For Each row As DataGridViewRow In DataGridViewProducts.SelectedRows
 
-                For index = 1 To copies
+                For i = 1 To copies
 
-                    Dim txt As New TextItem(6, 4, 20, 10, "G-Tech")
-                    txt.CounterStep = -1
-                    txt.TextAlignment = TextAlignment.Center
-
-                    Dim bc As New BarcodeItem(6, 10, 20, 10, BarcodeSymbology.Code128, row.Cells(4).Value)
-                    bc.BarWidth = 0.25
-                    bc.BarHeight = 7
-                    bc.CounterStep = 1
-                    bc.CounterUseLeadingZeros = True
-                    bc.BarcodeAlignment = BarcodeAlignment.MiddleCenter
-                    bc.Font.Size = 7
-
-                    tLabel.Items.Add(txt)
-                    tLabel.Items.Add(bc)
-
-                    Using pj As New WindowsPrintJob()
-                        pj.PrinterSettings = New Neodynamic.SDK.Printing.PrinterSettings()
-                        pj.PrinterSettings.Communication.CommunicationType = CommunicationType.USB
-                        pj.PrinterSettings.Dpi = 203
-                        pj.PrinterSettings.ProgrammingLanguage = ProgrammingLanguage.ZPL
-                        pj.PrinterSettings.PrinterName = "ZDesigner ZD230-203dpi ZPL"
-
-                        pj.Copies = 1
-                        pj.Print(tLabel)
-                    End Using
+                    barcodeData.Add(New Barcode(row.Cells(4).Value, "G-Tech"))
 
                 Next
 
             Next
+
+            tLabel.DataSource = barcodeData
+
+            Using pj As New WindowsPrintJob()
+                pj.PrinterSettings = New Neodynamic.SDK.Printing.PrinterSettings()
+                pj.PrinterSettings.Communication.CommunicationType = CommunicationType.USB
+                pj.PrinterSettings.Dpi = 203
+                pj.PrinterSettings.ProgrammingLanguage = ProgrammingLanguage.ZPL
+                pj.PrinterSettings.PrinterName = "ZDesigner ZD230-203dpi ZPL"
+
+                pj.Copies = 1
+                pj.Print(tLabel)
+            End Using
 
         Catch ex As Exception
 
@@ -320,6 +333,22 @@ Public Class FormDbView
     Private Sub TextBoxSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles TextBoxSearch.KeyUp
 
         DataGridViewProducts.DataSource = Me.search
+
+    End Sub
+
+    Private Sub NumericUpDownNoOfCols_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDownNoOfCols.ValueChanged
+
+        Dim noOfCols As Integer = Convert.ToInt32(NumericUpDownNoOfCols.Value)
+
+        If (noOfCols = 1) Then
+
+            NumericUpDownCopies.Value = 1
+
+        Else
+
+            NumericUpDownCopies.Value = 2
+
+        End If
 
     End Sub
 

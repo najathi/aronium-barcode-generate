@@ -1,15 +1,28 @@
-ThermalLabel SDK for .NET Standard
-==================================
+ThermalLabel SDK for .NET
+Visual ThermalLabel Editor for .NET Core Windows
+by Neodynamic SRL
+http://www.neodynamic.com
 
-1. Product details at https://neodynamic.com/products/printing/thermal-label/sdk-vb-net-csharp
+README
+==========================
 
-2. Please download Sample/Demo projects for ASP.NET, WinForms, WPF at https://github.com/neodynamic/ThermalLabel-SDK
-
-3. Help Doc https://neodynamic.com/Products/Help/ThermalLabel10.0
-
-4. If you need tech assistance, please contact our team at https://neodynamic.com/support
-
+Thank you for your interest in Visual ThermalLabel Editor for .NET Core Windows!
 
 
+[*] Getting Started
+
+     [*] Download Sample Code for .NET Core Windows Forms and WPF from
+         https://github.com/neodynamic/ThermalLabel-SDK
+ 
+     [*] Online Documentation
+         We encourage you to read and download the Visual ThermalLabel Editor
+         help docs from https://www.neodynamic.com/products/help
+
+[*] Do you need assistance?
+Please feel free to ask us any questions or make any comments. 
+Just contact us at support@neodynamic.com or 
+https://www.neodynamic.com/Support
 
 
+Thank you again for considering Neodynamic for your development needs. 
+We look forward to working with you.

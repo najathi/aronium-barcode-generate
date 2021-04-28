@@ -26,7 +26,8 @@ Partial Class FormDbView
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.ButtonRefresh = New System.Windows.Forms.Button()
+        Me.NumericUpDownCopies = New System.Windows.Forms.NumericUpDown()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.ButtonPrintPreview = New System.Windows.Forms.Button()
         Me.ButtonPrint = New System.Windows.Forms.Button()
@@ -36,7 +37,10 @@ Partial Class FormDbView
         Me.Label4 = New System.Windows.Forms.Label()
         Me.NumericUpDownWidth = New System.Windows.Forms.NumericUpDown()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.ButtonRefresh = New System.Windows.Forms.Button()
         Me.GroupBoxProducts = New System.Windows.Forms.GroupBox()
+        Me.TextBoxSearch = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.DataGridViewProducts = New System.Windows.Forms.DataGridView()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -46,9 +50,12 @@ Partial Class FormDbView
         Me.DataTable1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DataSetBarcode = New Aronium_Barcode_Generate.DataSetBarcode()
         Me.PrintDocumentLabels = New System.Drawing.Printing.PrintDocument()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBoxSearch = New System.Windows.Forms.TextBox()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.NumericUpDownCopies, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.NumericUpDownHeight, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownWidth, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,12 +63,13 @@ Partial Class FormDbView
         CType(Me.DataGridViewProducts, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataTable1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSetBarcode, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(42, 29)
+        Me.Label1.Location = New System.Drawing.Point(42, 59)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(0, 13)
         Me.Label1.TabIndex = 0
@@ -70,7 +78,7 @@ Partial Class FormDbView
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(21, 14)
+        Me.Label2.Location = New System.Drawing.Point(14, 36)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(313, 37)
         Me.Label2.TabIndex = 1
@@ -78,26 +86,39 @@ Partial Class FormDbView
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.ComboBox1)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.NumericUpDownCopies)
+        Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.TableLayoutPanel1)
+        Me.GroupBox1.Controls.Add(Me.ButtonTestPrint)
         Me.GroupBox1.Controls.Add(Me.NumericUpDownHeight)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.NumericUpDownWidth)
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Location = New System.Drawing.Point(28, 58)
+        Me.GroupBox1.Location = New System.Drawing.Point(21, 88)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(996, 195)
+        Me.GroupBox1.Size = New System.Drawing.Size(1008, 195)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Printer settings"
         '
-        'ButtonRefresh
+        'NumericUpDownCopies
         '
-        Me.ButtonRefresh.Location = New System.Drawing.Point(921, 22)
-        Me.ButtonRefresh.Name = "ButtonRefresh"
-        Me.ButtonRefresh.Size = New System.Drawing.Size(64, 20)
-        Me.ButtonRefresh.TabIndex = 1
-        Me.ButtonRefresh.Text = "Refresh"
-        Me.ButtonRefresh.UseVisualStyleBackColor = True
+        Me.NumericUpDownCopies.Location = New System.Drawing.Point(105, 67)
+        Me.NumericUpDownCopies.Name = "NumericUpDownCopies"
+        Me.NumericUpDownCopies.Size = New System.Drawing.Size(103, 20)
+        Me.NumericUpDownCopies.TabIndex = 11
+        Me.NumericUpDownCopies.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(21, 69)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(66, 13)
+        Me.Label6.TabIndex = 10
+        Me.Label6.Text = "No. of Copy:"
         '
         'TableLayoutPanel1
         '
@@ -108,13 +129,12 @@ Partial Class FormDbView
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonPrintPreview, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonPrint, 2, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonReportView, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonTestPrint, 1, 1)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(78, 120)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(23, 141)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(344, 69)
+        Me.TableLayoutPanel1.RowCount = 1
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(314, 37)
         Me.TableLayoutPanel1.TabIndex = 9
         '
         'ButtonPrintPreview
@@ -122,7 +142,7 @@ Partial Class FormDbView
         Me.ButtonPrintPreview.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ButtonPrintPreview.Location = New System.Drawing.Point(3, 3)
         Me.ButtonPrintPreview.Name = "ButtonPrintPreview"
-        Me.ButtonPrintPreview.Size = New System.Drawing.Size(108, 28)
+        Me.ButtonPrintPreview.Size = New System.Drawing.Size(98, 31)
         Me.ButtonPrintPreview.TabIndex = 2
         Me.ButtonPrintPreview.Text = "Print Preview"
         Me.ButtonPrintPreview.UseVisualStyleBackColor = True
@@ -130,9 +150,9 @@ Partial Class FormDbView
         'ButtonPrint
         '
         Me.ButtonPrint.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonPrint.Location = New System.Drawing.Point(231, 3)
+        Me.ButtonPrint.Location = New System.Drawing.Point(211, 3)
         Me.ButtonPrint.Name = "ButtonPrint"
-        Me.ButtonPrint.Size = New System.Drawing.Size(110, 28)
+        Me.ButtonPrint.Size = New System.Drawing.Size(100, 31)
         Me.ButtonPrint.TabIndex = 8
         Me.ButtonPrint.Text = "Print"
         Me.ButtonPrint.UseVisualStyleBackColor = True
@@ -140,17 +160,16 @@ Partial Class FormDbView
         'ButtonReportView
         '
         Me.ButtonReportView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonReportView.Location = New System.Drawing.Point(117, 3)
+        Me.ButtonReportView.Location = New System.Drawing.Point(107, 3)
         Me.ButtonReportView.Name = "ButtonReportView"
-        Me.ButtonReportView.Size = New System.Drawing.Size(108, 28)
+        Me.ButtonReportView.Size = New System.Drawing.Size(98, 31)
         Me.ButtonReportView.TabIndex = 6
         Me.ButtonReportView.Text = "Report View"
         Me.ButtonReportView.UseVisualStyleBackColor = True
         '
         'ButtonTestPrint
         '
-        Me.ButtonTestPrint.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonTestPrint.Location = New System.Drawing.Point(117, 37)
+        Me.ButtonTestPrint.Location = New System.Drawing.Point(877, 28)
         Me.ButtonTestPrint.Name = "ButtonTestPrint"
         Me.ButtonTestPrint.Size = New System.Drawing.Size(108, 29)
         Me.ButtonTestPrint.TabIndex = 7
@@ -159,7 +178,7 @@ Partial Class FormDbView
         '
         'NumericUpDownHeight
         '
-        Me.NumericUpDownHeight.Location = New System.Drawing.Point(202, 33)
+        Me.NumericUpDownHeight.Location = New System.Drawing.Point(229, 33)
         Me.NumericUpDownHeight.Name = "NumericUpDownHeight"
         Me.NumericUpDownHeight.Size = New System.Drawing.Size(103, 20)
         Me.NumericUpDownHeight.TabIndex = 5
@@ -168,7 +187,7 @@ Partial Class FormDbView
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(187, 36)
+        Me.Label4.Location = New System.Drawing.Point(214, 36)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(14, 13)
         Me.Label4.TabIndex = 4
@@ -176,7 +195,7 @@ Partial Class FormDbView
         '
         'NumericUpDownWidth
         '
-        Me.NumericUpDownWidth.Location = New System.Drawing.Point(78, 33)
+        Me.NumericUpDownWidth.Location = New System.Drawing.Point(105, 33)
         Me.NumericUpDownWidth.Name = "NumericUpDownWidth"
         Me.NumericUpDownWidth.Size = New System.Drawing.Size(103, 20)
         Me.NumericUpDownWidth.TabIndex = 3
@@ -191,18 +210,43 @@ Partial Class FormDbView
         Me.Label3.TabIndex = 0
         Me.Label3.Text = "Paper size:"
         '
+        'ButtonRefresh
+        '
+        Me.ButtonRefresh.Location = New System.Drawing.Point(921, 22)
+        Me.ButtonRefresh.Name = "ButtonRefresh"
+        Me.ButtonRefresh.Size = New System.Drawing.Size(64, 20)
+        Me.ButtonRefresh.TabIndex = 1
+        Me.ButtonRefresh.Text = "Refresh"
+        Me.ButtonRefresh.UseVisualStyleBackColor = True
+        '
         'GroupBoxProducts
         '
         Me.GroupBoxProducts.Controls.Add(Me.TextBoxSearch)
         Me.GroupBoxProducts.Controls.Add(Me.Label5)
         Me.GroupBoxProducts.Controls.Add(Me.ButtonRefresh)
         Me.GroupBoxProducts.Controls.Add(Me.DataGridViewProducts)
-        Me.GroupBoxProducts.Location = New System.Drawing.Point(21, 259)
+        Me.GroupBoxProducts.Location = New System.Drawing.Point(21, 289)
         Me.GroupBoxProducts.Name = "GroupBoxProducts"
         Me.GroupBoxProducts.Size = New System.Drawing.Size(1008, 496)
         Me.GroupBoxProducts.TabIndex = 3
         Me.GroupBoxProducts.TabStop = False
         Me.GroupBoxProducts.Text = "Products"
+        '
+        'TextBoxSearch
+        '
+        Me.TextBoxSearch.Location = New System.Drawing.Point(53, 24)
+        Me.TextBoxSearch.Name = "TextBoxSearch"
+        Me.TextBoxSearch.Size = New System.Drawing.Size(339, 20)
+        Me.TextBoxSearch.TabIndex = 3
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 26)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(44, 13)
+        Me.Label5.TabIndex = 2
+        Me.Label5.Text = "Search:"
         '
         'DataGridViewProducts
         '
@@ -269,27 +313,45 @@ Partial Class FormDbView
         'PrintDocumentLabels
         '
         '
-        'Label5
+        'ToolStrip1
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 26)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(44, 13)
-        Me.Label5.TabIndex = 2
-        Me.Label5.Text = "Search:"
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1066, 25)
+        Me.ToolStrip1.TabIndex = 4
+        Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'TextBoxSearch
+        'ToolStripLabel1
         '
-        Me.TextBoxSearch.Location = New System.Drawing.Point(53, 24)
-        Me.TextBoxSearch.Name = "TextBoxSearch"
-        Me.TextBoxSearch.Size = New System.Drawing.Size(339, 20)
-        Me.TextBoxSearch.TabIndex = 3
+        Me.ToolStripLabel1.Name = "ToolStripLabel1"
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(25, 22)
+        Me.ToolStripLabel1.Text = "File"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(21, 106)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(62, 13)
+        Me.Label7.TabIndex = 12
+        Me.Label7.Text = "No. of Cols:"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"1", "2"})
+        Me.ComboBox1.Location = New System.Drawing.Point(105, 103)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(103, 21)
+        Me.ComboBox1.TabIndex = 13
         '
         'FormDbView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1066, 698)
+        Me.ClientSize = New System.Drawing.Size(1066, 798)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.GroupBoxProducts)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label2)
@@ -300,6 +362,7 @@ Partial Class FormDbView
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.NumericUpDownCopies, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.NumericUpDownHeight, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownWidth, System.ComponentModel.ISupportInitialize).EndInit()
@@ -308,6 +371,8 @@ Partial Class FormDbView
         CType(Me.DataGridViewProducts, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataTable1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataSetBarcode, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -339,4 +404,10 @@ Partial Class FormDbView
     Friend WithEvents Label3 As Label
     Friend WithEvents TextBoxSearch As TextBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents NumericUpDownCopies As NumericUpDown
+    Friend WithEvents Label6 As Label
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents ToolStripLabel1 As ToolStripLabel
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Label7 As Label
 End Class

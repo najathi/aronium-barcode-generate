@@ -19,12 +19,12 @@ Public Class FormDbView
 
     Private Sub FormDbView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        If connection.State = ConnectionState.Closed Then
-            connection.Open()
-            If connection.State = ConnectionState.Open Then
-                MessageBox.Show("The Connection is: " & connection.State.ToString())
-            End If
-        End If
+        'If connection.State = ConnectionState.Closed Then
+        '    connection.Open()
+        '    If connection.State = ConnectionState.Open Then
+        '        MessageBox.Show("The Connection is: " & connection.State.ToString())
+        '    End If
+        'End If
 
         updateDataBiding()
 
@@ -38,6 +38,8 @@ Public Class FormDbView
     End Sub
 
     Private Sub updateDataBiding(Optional cmd As SQLiteCommand = Nothing)
+
+        DataGridViewProducts.DataSource = Me.search
 
         Try
 
@@ -107,10 +109,14 @@ Public Class FormDbView
 
     Private Sub PrintDocumentLabels_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocumentLabels.PrintPage
 
-        Dim x As Integer = 50
-        Dim y As Integer = 20
-        Dim w As Integer = 30
-        Dim h As Integer = 15
+        Application.DoEvents()
+
+        Dim x As Integer = 0
+        Dim x1 As Integer = 0
+        Dim y As Integer = 0
+        Dim y2 As Integer = 0
+        Dim w As Integer = 50
+        Dim h As Integer = 25
 
         Dim format As New StringFormat
         format.Alignment = StringAlignment.Center
@@ -118,22 +124,37 @@ Public Class FormDbView
         Dim writer As New BarcodeWriter
         writer.Format = BarcodeFormat.CODE_128
 
+        Dim RegFont As System.Drawing.Font
+        Dim Black As System.Drawing.Brush
+
+        RegFont = New System.Drawing.Font("Arial", 2, FontStyle.Regular, Drawing.GraphicsUnit.Point)
+        Black = System.Drawing.Brushes.Black
+
         For Each row As DataGridViewRow In DataGridViewProducts.SelectedRows
 
-            x = 50
+            x = 10
+            x1 = 2
+            y = 2
 
             For i As Integer = 1 To 2
 
+                e.Graphics.DrawString(row.Cells(1).Value, RegFont, Black, x1, y)
+
+                y = y + 5
+
                 Dim barcodeImage = writer.Write(row.Cells(4).Value)
 
-                e.Graphics.DrawImage(writer.Write(row.Cells(4).Value), x, y, w, h)
-                x = x + w + 40
+                e.Graphics.DrawImage(barcodeImage, x, y, 30, 15)
+                x = x + w + 0
+                x1 = x1 + w + 0
 
             Next
 
-            y = y + h + 40
+            y = y + h + 0
 
         Next
+
+        Application.DoEvents()
 
     End Sub
 
@@ -260,4 +281,32 @@ Public Class FormDbView
         End Try
 
     End Sub
+
+    Private Sub TextBoxSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles TextBoxSearch.KeyUp
+
+        DataGridViewProducts.DataSource = Me.search
+
+    End Sub
+
+    Private Function search() As DataTable
+
+        Dim query As String = "SELECT Product.Id, Product.Name, Product.Price, Barcode.Id, Barcode.Value FROM Barcode INNER JOIN Product ON Barcode.ProductId = Product.Id"
+        query &= " WHERE Product.Id like '%' +@param1+ '%' "
+        query &= " OR Product.Name like '%' +@param1+ '%' "
+        query &= " OR Product.Price like '%' +@param1+ '%' "
+        query &= " OR Barcode.Value like '%' +@param1+ '%' "
+        query &= " OR @param1= '' ORDER BY Product.Id "
+
+        command.CommandText = query
+        command.Parameters.AddWithValue("@param1", TextBoxSearch.Text.Trim())
+        Dim adapter As New SQLiteDataAdapter(command)
+        Dim dt As New DataTable
+        adapter.Fill(dt)
+        DataGridViewProducts.DataSource = dt
+        Return (dt)
+
+    End Function
+
+
+
 End Class

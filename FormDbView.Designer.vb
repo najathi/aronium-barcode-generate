@@ -26,34 +26,36 @@ Partial Class FormDbView
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ButtonRefresh = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.ButtonPrintPreview = New System.Windows.Forms.Button()
+        Me.ButtonPrint = New System.Windows.Forms.Button()
         Me.ButtonReportView = New System.Windows.Forms.Button()
+        Me.ButtonTestPrint = New System.Windows.Forms.Button()
         Me.NumericUpDownHeight = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.NumericUpDownWidth = New System.Windows.Forms.NumericUpDown()
-        Me.ButtonPrintPreview = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBoxProducts = New System.Windows.Forms.GroupBox()
-        Me.ButtonRefresh = New System.Windows.Forms.Button()
         Me.DataGridViewProducts = New System.Windows.Forms.DataGridView()
-        Me.PrintDocumentLabels = New System.Drawing.Printing.PrintDocument()
-        Me.DataSetBarcode = New Aronium_Barcode_Generate.DataSetBarcode()
-        Me.DataTable1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Id1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ValueDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ButtonTestPrint = New System.Windows.Forms.Button()
-        Me.ButtonPrint = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.DataTable1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataSetBarcode = New Aronium_Barcode_Generate.DataSetBarcode()
+        Me.PrintDocumentLabels = New System.Drawing.Printing.PrintDocument()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TextBoxSearch = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
+        Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.NumericUpDownHeight, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDownWidth, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBoxProducts.SuspendLayout()
         CType(Me.DataGridViewProducts, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataSetBarcode, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataTable1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TableLayoutPanel1.SuspendLayout()
+        CType(Me.DataSetBarcode, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -88,6 +90,53 @@ Partial Class FormDbView
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Printer settings"
         '
+        'ButtonRefresh
+        '
+        Me.ButtonRefresh.Location = New System.Drawing.Point(921, 22)
+        Me.ButtonRefresh.Name = "ButtonRefresh"
+        Me.ButtonRefresh.Size = New System.Drawing.Size(64, 20)
+        Me.ButtonRefresh.TabIndex = 1
+        Me.ButtonRefresh.Text = "Refresh"
+        Me.ButtonRefresh.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel1
+        '
+        Me.TableLayoutPanel1.ColumnCount = 3
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel1.Controls.Add(Me.ButtonPrintPreview, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.ButtonPrint, 2, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.ButtonReportView, 1, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.ButtonTestPrint, 1, 1)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(78, 120)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.RowCount = 2
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(344, 69)
+        Me.TableLayoutPanel1.TabIndex = 9
+        '
+        'ButtonPrintPreview
+        '
+        Me.ButtonPrintPreview.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ButtonPrintPreview.Location = New System.Drawing.Point(3, 3)
+        Me.ButtonPrintPreview.Name = "ButtonPrintPreview"
+        Me.ButtonPrintPreview.Size = New System.Drawing.Size(108, 28)
+        Me.ButtonPrintPreview.TabIndex = 2
+        Me.ButtonPrintPreview.Text = "Print Preview"
+        Me.ButtonPrintPreview.UseVisualStyleBackColor = True
+        '
+        'ButtonPrint
+        '
+        Me.ButtonPrint.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ButtonPrint.Location = New System.Drawing.Point(231, 3)
+        Me.ButtonPrint.Name = "ButtonPrint"
+        Me.ButtonPrint.Size = New System.Drawing.Size(110, 28)
+        Me.ButtonPrint.TabIndex = 8
+        Me.ButtonPrint.Text = "Print"
+        Me.ButtonPrint.UseVisualStyleBackColor = True
+        '
         'ButtonReportView
         '
         Me.ButtonReportView.Dock = System.Windows.Forms.DockStyle.Fill
@@ -97,6 +146,16 @@ Partial Class FormDbView
         Me.ButtonReportView.TabIndex = 6
         Me.ButtonReportView.Text = "Report View"
         Me.ButtonReportView.UseVisualStyleBackColor = True
+        '
+        'ButtonTestPrint
+        '
+        Me.ButtonTestPrint.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ButtonTestPrint.Location = New System.Drawing.Point(117, 37)
+        Me.ButtonTestPrint.Name = "ButtonTestPrint"
+        Me.ButtonTestPrint.Size = New System.Drawing.Size(108, 29)
+        Me.ButtonTestPrint.TabIndex = 7
+        Me.ButtonTestPrint.Text = "Test Print"
+        Me.ButtonTestPrint.UseVisualStyleBackColor = True
         '
         'NumericUpDownHeight
         '
@@ -123,18 +182,19 @@ Partial Class FormDbView
         Me.NumericUpDownWidth.TabIndex = 3
         Me.NumericUpDownWidth.Value = New Decimal(New Integer() {50, 0, 0, 0})
         '
-        'ButtonPrintPreview
+        'Label3
         '
-        Me.ButtonPrintPreview.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonPrintPreview.Location = New System.Drawing.Point(3, 3)
-        Me.ButtonPrintPreview.Name = "ButtonPrintPreview"
-        Me.ButtonPrintPreview.Size = New System.Drawing.Size(108, 28)
-        Me.ButtonPrintPreview.TabIndex = 2
-        Me.ButtonPrintPreview.Text = "Print Preview"
-        Me.ButtonPrintPreview.UseVisualStyleBackColor = True
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(20, 35)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(59, 13)
+        Me.Label3.TabIndex = 0
+        Me.Label3.Text = "Paper size:"
         '
         'GroupBoxProducts
         '
+        Me.GroupBoxProducts.Controls.Add(Me.TextBoxSearch)
+        Me.GroupBoxProducts.Controls.Add(Me.Label5)
         Me.GroupBoxProducts.Controls.Add(Me.ButtonRefresh)
         Me.GroupBoxProducts.Controls.Add(Me.DataGridViewProducts)
         Me.GroupBoxProducts.Location = New System.Drawing.Point(21, 259)
@@ -144,42 +204,22 @@ Partial Class FormDbView
         Me.GroupBoxProducts.TabStop = False
         Me.GroupBoxProducts.Text = "Products"
         '
-        'ButtonRefresh
-        '
-        Me.ButtonRefresh.Location = New System.Drawing.Point(5, 19)
-        Me.ButtonRefresh.Name = "ButtonRefresh"
-        Me.ButtonRefresh.Size = New System.Drawing.Size(64, 20)
-        Me.ButtonRefresh.TabIndex = 1
-        Me.ButtonRefresh.Text = "Refresh"
-        Me.ButtonRefresh.UseVisualStyleBackColor = True
-        '
         'DataGridViewProducts
         '
         Me.DataGridViewProducts.AllowUserToAddRows = False
         Me.DataGridViewProducts.AllowUserToDeleteRows = False
         Me.DataGridViewProducts.AutoGenerateColumns = False
+        Me.DataGridViewProducts.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewProducts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.PriceDataGridViewTextBoxColumn, Me.Id1DataGridViewTextBoxColumn, Me.ValueDataGridViewTextBoxColumn})
+        Me.DataGridViewProducts.Cursor = System.Windows.Forms.Cursors.Hand
         Me.DataGridViewProducts.DataSource = Me.DataTable1BindingSource
-        Me.DataGridViewProducts.Location = New System.Drawing.Point(5, 45)
+        Me.DataGridViewProducts.Location = New System.Drawing.Point(5, 56)
         Me.DataGridViewProducts.Name = "DataGridViewProducts"
         Me.DataGridViewProducts.ReadOnly = True
         Me.DataGridViewProducts.RowTemplate.Height = 25
-        Me.DataGridViewProducts.Size = New System.Drawing.Size(998, 445)
+        Me.DataGridViewProducts.Size = New System.Drawing.Size(998, 434)
         Me.DataGridViewProducts.TabIndex = 0
-        '
-        'PrintDocumentLabels
-        '
-        '
-        'DataSetBarcode
-        '
-        Me.DataSetBarcode.DataSetName = "DataSetBarcode"
-        Me.DataSetBarcode.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DataTable1BindingSource
-        '
-        Me.DataTable1BindingSource.DataMember = "DataTable1"
-        Me.DataTable1BindingSource.DataSource = Me.DataSetBarcode
         '
         'IdDataGridViewTextBoxColumn
         '
@@ -216,52 +256,34 @@ Partial Class FormDbView
         Me.ValueDataGridViewTextBoxColumn.Name = "ValueDataGridViewTextBoxColumn"
         Me.ValueDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'ButtonTestPrint
+        'DataTable1BindingSource
         '
-        Me.ButtonTestPrint.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonTestPrint.Location = New System.Drawing.Point(117, 37)
-        Me.ButtonTestPrint.Name = "ButtonTestPrint"
-        Me.ButtonTestPrint.Size = New System.Drawing.Size(108, 29)
-        Me.ButtonTestPrint.TabIndex = 7
-        Me.ButtonTestPrint.Text = "Test Print"
-        Me.ButtonTestPrint.UseVisualStyleBackColor = True
+        Me.DataTable1BindingSource.DataMember = "DataTable1"
+        Me.DataTable1BindingSource.DataSource = Me.DataSetBarcode
         '
-        'ButtonPrint
+        'DataSetBarcode
         '
-        Me.ButtonPrint.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonPrint.Location = New System.Drawing.Point(231, 3)
-        Me.ButtonPrint.Name = "ButtonPrint"
-        Me.ButtonPrint.Size = New System.Drawing.Size(110, 28)
-        Me.ButtonPrint.TabIndex = 8
-        Me.ButtonPrint.Text = "Print"
-        Me.ButtonPrint.UseVisualStyleBackColor = True
+        Me.DataSetBarcode.DataSetName = "DataSetBarcode"
+        Me.DataSetBarcode.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'Label3
+        'PrintDocumentLabels
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(20, 35)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(59, 13)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Paper size:"
         '
-        'TableLayoutPanel1
+        'Label5
         '
-        Me.TableLayoutPanel1.ColumnCount = 3
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonPrintPreview, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonPrint, 2, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonReportView, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonTestPrint, 1, 1)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(78, 120)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(344, 69)
-        Me.TableLayoutPanel1.TabIndex = 9
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 26)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(44, 13)
+        Me.Label5.TabIndex = 2
+        Me.Label5.Text = "Search:"
+        '
+        'TextBoxSearch
+        '
+        Me.TextBoxSearch.Location = New System.Drawing.Point(53, 24)
+        Me.TextBoxSearch.Name = "TextBoxSearch"
+        Me.TextBoxSearch.Size = New System.Drawing.Size(339, 20)
+        Me.TextBoxSearch.TabIndex = 3
         '
         'FormDbView
         '
@@ -278,13 +300,14 @@ Partial Class FormDbView
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.NumericUpDownHeight, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDownWidth, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBoxProducts.ResumeLayout(False)
+        Me.GroupBoxProducts.PerformLayout()
         CType(Me.DataGridViewProducts, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataSetBarcode, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataTable1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TableLayoutPanel1.ResumeLayout(False)
+        CType(Me.DataSetBarcode, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -314,4 +337,6 @@ Partial Class FormDbView
     Friend WithEvents ButtonPrint As Button
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Label3 As Label
+    Friend WithEvents TextBoxSearch As TextBox
+    Friend WithEvents Label5 As Label
 End Class

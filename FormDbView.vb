@@ -22,8 +22,8 @@ Public Class FormDbView
 
     Private Sub FormDbView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        ThermalLabel.LicenseOwner = "ann.williams18071984@outlook.com"
-        ThermalLabel.LicenseKey = "4UB9OWO1JNPQ"
+        ThermalLabel.LicenseOwner = "najathi777@gmail.com-Ultimate Edition-Developer License-EVAL-ID:637578313649768643"
+        ThermalLabel.LicenseKey = "ZBB29HQVP4A35XWE8U9BJASF8ALXJV5YSJMADFPEDH9XTQSWB2WQ"
 
         'If connection.State = ConnectionState.Closed Then
         '    connection.Open()
@@ -215,7 +215,6 @@ Public Class FormDbView
             'txt.Font.Unit = FontUnit.Point
             'txt.Font.Size = 10
 
-            'Define a BarcodeItem object
             Dim bc As New BarcodeItem(6, 10, 20, 10, BarcodeSymbology.Code128, DataGridViewProducts.SelectedRows(0).Cells(4).Value)
             bc.BarWidth = 0.25
             bc.BarHeight = 7
@@ -355,5 +354,14 @@ Public Class FormDbView
 
     End Function
 
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Me.Close()
+    End Sub
 
+    Private Sub AboutGTechBarcodeGeneratorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutGTechBarcodeGeneratorToolStripMenuItem.Click
+
+        Dim formAbout As Form = New FormAbout
+        formAbout.Show()
+
+    End Sub
 End Class
